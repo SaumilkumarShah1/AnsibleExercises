@@ -14,7 +14,7 @@
       - "hello2"
       - "hello3"
       - "hello5"
-    when: item == "{{ loop_1 }}" && item == "hello2"
+    when: (item == "{{ loop_1 }}" and item == "hello2")
 
         
   - name: Examine the joined string
