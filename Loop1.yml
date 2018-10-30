@@ -9,16 +9,15 @@
   - name: Ansible loop with conditional example
     debug:
         msg: "{{ item }}"
-    set_fact:
-        my_joined_list: "{{ item }}"
+    ArrayList: "{{ ArrayList }} + [ '{{ item }}' ]"
     with_items:
       - "hello1"
       - "hello2"
       - "hello3"
       - "hello5"
-    when: (item == "{{ loop_1 }}" and item == "hello2")
+    when: (item == "{{ loop_1 }}"
 
         
   - name: Examine the joined string
     debug:
-        msg: "{{ my_joined_list }}"
+        msg: "{{ ArrayList }}"
