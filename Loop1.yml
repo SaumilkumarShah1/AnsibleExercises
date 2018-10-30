@@ -9,6 +9,8 @@
   - name: Ansible loop with conditional example
     debug:
       msg: "{{ item }}"
+    set_fact:
+    my_joined_list: "{{ item | join('\n') }}"
     ArrayList: "{{ ArrayList }} + [ '{{ item }}' ]"
     with_items:
       - "hello1"
@@ -18,4 +20,4 @@
     when: item == "{{ loop_1 }}"
   - name: Ansible loop with conditional example
     debug:
-      msg: Message- "{{ ArrayList }}"
+      msg: Message- "{{ my_joined_list }}"
