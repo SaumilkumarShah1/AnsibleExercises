@@ -1,0 +1,33 @@
+---
+- hosts: all
+  remote_user: root
+
+  tasks:
+
+  - name: Create the list
+    set_fact:
+        my_item: "{{ item }}"
+    with_items:
+      - "One fish"
+      - "Two fish"
+      - "Red fish"
+      - "Blue fish"
+    register: my_item_result
+
+  - name: Extract items and turn into a list
+    set_fact:
+        my_list: "{{ my_item_result.results | map(attribute='ansible_facts.my_item') | list }}"
+
+  - name: Examine the list
+    debug:
+        msg: "{{ my_list }}"
+
+  - name: Concatenate the public keys
+    set_fact:
+        my_joined_list: "{{ item | join('\n') }}"
+    with_items:
+      - "{{ my_list }}"
+
+  - name: Examine the joined string
+    debug:
+        msg: "{{ my_joined_list }}"
