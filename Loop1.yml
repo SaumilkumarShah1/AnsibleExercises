@@ -8,7 +8,7 @@
       
   - name: Ansible loop with conditional example
     set_fact:
-        my_joined_list: "{{ item | join('\n') }}"
+        my_joined_list: "{{ item }}"
     with_items:
       - "hello1"
       - "hello2"
