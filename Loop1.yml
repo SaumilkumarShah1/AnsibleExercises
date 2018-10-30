@@ -16,9 +16,7 @@
       - "hello3"
       - "hello1"
     when: item == "{{ loop_1 }}"
-    set_fact:
-      my_joined_list: "{{ item | join('\n') }}"
       
   - name: Ansible loop with conditional example
     debug:
-      msg: Message- "{{ my_joined_list }}"
+      msg: Message- "{{ ArrayList[0] }}"
