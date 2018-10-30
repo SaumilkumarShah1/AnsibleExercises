@@ -18,4 +18,4 @@
     when: item == "{{ loop_1 }}"
   - name: Ansible loop with conditional example
     debug:
-      msg1: "{{ ArrayList }}"
+      msg: Message- "{{ ArrayList }}"
