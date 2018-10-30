@@ -2,9 +2,14 @@
   vars:
     loop_1: "hello1"
   tasks:
+  - name: Prepare Array for ArrayList
+    set_fact:
+      ArrayList: []
+      
   - name: Ansible loop with conditional example
     debug:
       msg: "{{ item }}"
+    ArrayList: "{{ ArrayList }} + [ '{{ item }}' ]"
     with_items:
       - "hello1"
       - "hello2"
