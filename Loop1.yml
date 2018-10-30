@@ -1,9 +1,12 @@
 - hosts: all
+  vars:
+    loop_1: "hello1"
   tasks:
-  - name: Ansible loop with index example
+  - name: Ansible loop with conditional example
     debug:
-      msg: "echo loop index at {{ item.1 }} and value at {{item.2}}"
-    with_indexed_items:
+      msg: "{{ item }}"
+    with_items:
       - "hello1"
       - "hello2"
       - "hello3"
+    when: item == "{{ loop_1 }}"
