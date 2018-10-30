@@ -8,12 +8,12 @@
       
   - name: Ansible loop with conditional example
     set_fact:
-        my_joined_list: "{{ item | join(', ') }}"
+        my_joined_list: "{{ item | join('\n') }}"
     with_items:
       - "hello1"
       - "hello2"
       - "hello3"
-      - "hello1"
+      - "hello5"
     when: item == "{{ loop_1 }}"
 
         
