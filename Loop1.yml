@@ -1,6 +1,6 @@
 - hosts: all
   vars:
-    loop_1: "hello1"
+    loop_1: "hello4"
   tasks:
   - name: Ansible loop with conditional example
     debug:
