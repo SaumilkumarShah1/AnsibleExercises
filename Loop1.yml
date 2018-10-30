@@ -19,4 +19,4 @@
         
   - name: Examine the joined string
     debug:
-        msg: "{{ ArrayList }}"
+        msg: "My Values - {{ ArrayList | join(',') }}"
