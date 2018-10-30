@@ -2,7 +2,7 @@
   tasks:
   - name: Ansible loop with index example
     debug:
-      msg: "echo loop index at {{ item.0 }} and value at {{item.1}}"
+      msg: "echo loop index at {{ item.1 }} and value at {{item.2}}"
     with_indexed_items:
       - "hello1"
       - "hello2"
