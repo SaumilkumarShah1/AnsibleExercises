@@ -16,6 +16,10 @@
       - "hello3"
       - "hello1"
     when: item == "{{ loop_1 }}"
-      
+     
+  - name: Build a list of all the security group names.
+    set_fact:
+        ArrayList: "{{ ArrayList }} + [ '{{ item }}' ]"
+        
   - name: Print the security group names to the console.
     debug: var=ArrayList
