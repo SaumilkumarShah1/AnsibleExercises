@@ -16,3 +16,6 @@
       - "hello3"
       - "hello1"
     when: item == "{{ loop_1 }}"
+  - name: Ansible loop with conditional example
+    debug:
+      msg1: "{{ ArrayList }}"
