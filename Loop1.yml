@@ -1,6 +1,6 @@
 - hosts: all
   vars:
-    loop_1: "hello4"
+    loop_1: "hello1"
   tasks:
   - name: Ansible loop with conditional example
     debug:
@@ -9,4 +9,5 @@
       - "hello1"
       - "hello2"
       - "hello3"
+      - "hello1"
     when: item == "{{ loop_1 }}"
