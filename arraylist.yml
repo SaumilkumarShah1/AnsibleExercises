@@ -31,3 +31,7 @@
   - name: Examine the joined string
     debug:
         msg: "{{ my_joined_list }}"
+   
+  - name: Concatenate the public keys
+    set_fact:
+        my_joined_list: "{{ my_list | join('\n') }}"
