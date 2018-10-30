@@ -7,6 +7,8 @@
       ArrayList: []
       
   - name: Ansible loop with conditional example
+    debug:
+        msg: "{{ item }}"
     set_fact:
         my_joined_list: "{{ item }}"
     with_items:
