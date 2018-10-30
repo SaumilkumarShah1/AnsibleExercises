@@ -7,19 +7,16 @@
       ArrayList: []
       
   - name: Ansible loop with conditional example
-    debug:
-      msg: "{{ item }}"
-    ArrayList: "{{ ArrayList }} + [ '{{ item }}' ]"
+    set_fact:
+        my_joined_list: "{{ item | join(', ') }}"
     with_items:
       - "hello1"
       - "hello2"
       - "hello3"
       - "hello1"
     when: item == "{{ loop_1 }}"
-     
-  - name: Build a list of all the security group names.
-    set_fact:
-        ArrayList: "{{ ArrayList }} + [ '{{ item }}' ]"
+
         
-  - name: Print the security group names to the console.
-    debug: var=ArrayList
+  - name: Examine the joined string
+    debug:
+        msg: "{{ my_joined_list }}"
