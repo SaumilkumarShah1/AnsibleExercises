@@ -16,7 +16,7 @@
 
   - name: printing command output
     debug:
-      msg: "{{s1}}"
+      msg: "{{s1.end}}"
 
   - name: creating a directory
     file:
