@@ -7,6 +7,9 @@
       ArrayList: []
       
   - name: Ansible loop with conditional example
+    azure_rm_virtualmachine:
+      name: "{{ item }}"
+      allocated: no
     set_fact:
       ArrayList: "{{ ArrayList }} + [ '{{ item }}' ]"
     with_items:
