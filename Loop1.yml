@@ -25,20 +25,16 @@
     debug:
         msg: "My Values - {{ ArrayList | join(',') }}"
         
-  - name: Create a VM with a custom image
-    azure_rm_resourcegroup_facts:
-      ArrayList1: "{{ ArrayList1 }} + [ '{{ item }}' ]"
-    azure_rm_virtualmachine:
-      resource_group: Testing
-      name: testvm001
-    with_items:
-      - "hello1"
-      - "hello2"
-      - "hello3"
-      - "hello5"
-    when: (item == "{{ loop_1 }}" or item == "hello5")
-    
-  - name: Examine the joined string azure_rm_resourcegroup_facts
-    debug:
-        msg: "My Values - {{ ArrayList1 | join(',') }}"
+- name: Create VM with defaults
+  azure_rm_virtualmachine:
+    resource_group: Testing
+    name: testvm10
+    admin_username: chouseknecht
+    admin_password: S@umil1234567
+    image:
+      offer: CentOS
+      publisher: OpenLogic
+      sku: '7.1'
+      version: latest
+
     
