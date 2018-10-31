@@ -29,5 +29,5 @@
         
   - name: Examine the joined string
     debug:
-        msg: "My Values - {{ ArrayList | join(',') }}"
+        msg: "My Values - {{ ArrayList | length }}"
         
