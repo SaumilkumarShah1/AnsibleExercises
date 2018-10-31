@@ -24,6 +24,6 @@
       state: directory
     register: f1
    
-   - name: printing directory output
+  - name: printing directory output
     debug:
       msg: "{{f1}}"
