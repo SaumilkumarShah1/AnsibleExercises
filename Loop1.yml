@@ -5,17 +5,6 @@
   - name: Prepare Array for ArrayList
     set_fact:
       ArrayList: []
-      
-  - name: Ansible loop with conditional example
-    azure_rm_virtualmachine:
-        name: "{{ item }}" 
-    with_items:
-      - "hello1"
-      - "hello2"
-      - "hello3"
-      - "hello5"
-    when: (item == "{{ loop_1 }}" or item == "hello5")
-    
   - name: Ansible  
     set_fact:
       ArrayList: "{{ ArrayList }} + [ '{{ item }}' ]"
