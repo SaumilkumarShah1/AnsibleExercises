@@ -7,12 +7,14 @@
       ArrayList: []
       
   - name: Ansible loop with conditional example
-    set_fact:
-      ArrayList: "{{ ArrayList }} + [ '{{ item }}' ]"
     azure_rm_virtualmachine:
       name: "{{ item }}"
       allocated: no
     
+    
+  - name: Ansible loop with conditional example
+    set_fact:
+      ArrayList: "{{ ArrayList }} + [ '{{ item }}' ]"    
     with_items:
       - "hello1"
       - "hello2"
