@@ -1,0 +1,29 @@
+---
+- hosts: localhost
+  connection: local
+  tasks:
+  - name: pingging localhost
+    ping:
+    register: p1
+  - name: print ping
+    debug:
+      msg: "{{p1}}"
+
+
+  - name: command
+    shell: cat /etc/passwd
+    register: s1
+
+  - name: printing command output
+    debug:
+      msg: "{{s1}}"
+
+  - name: creating a directory
+    file:
+      path: /tmp/data
+      state: directory
+    register: f1
+   
+   - name: printing directory output
+    debug:
+      msg: "{{f1}}"
