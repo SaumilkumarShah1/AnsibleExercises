@@ -5,6 +5,10 @@
   - name: Prepare Array for ArrayList
     set_fact:
       ArrayList: []
+      
+  - name: Prepare Array for ArrayList1
+    set_fact:
+      ArrayList1: []
     
   - name: Ansible loop with conditional example
     set_fact:
@@ -22,11 +26,19 @@
         msg: "My Values - {{ ArrayList | join(',') }}"
         
   - name: Create a VM with a custom image
+    azure_rm_resourcegroup_facts:
+      ArrayList1: "{{ ArrayList1 }} + [ '{{ item }}' ]"
     azure_rm_virtualmachine:
       resource_group: Testing
       name: testvm001
-      vm_size: Standard_DS1_v2
-      admin_username: adminUser
-      admin_password: password01
-      image: customimage001
+    with_items:
+      - "hello1"
+      - "hello2"
+      - "hello3"
+      - "hello5"
+    when: (item == "{{ loop_1 }}" or item == "hello5")
+    
+  - name: Examine the joined string azure_rm_resourcegroup_facts
+    debug:
+        msg: "My Values - {{ ArrayList1 | join(',') }}"
     
