@@ -6,13 +6,19 @@
     set_fact:
       ArrayList: []
       
-  - name: Prepare Array for ArrayList1
-    set_fact:
-      ArrayList1: []
-    
   - name: Ansible loop with conditional example
+    azure_rm_virtualmachine:
+        name: "{{ item }}" 
+    with_items:
+      - "hello1"
+      - "hello2"
+      - "hello3"
+      - "hello5"
+    when: (item == "{{ loop_1 }}" or item == "hello5")
+    
+  - name: Ansible  
     set_fact:
-      ArrayList: "{{ ArrayList }} + [ '{{ item }}' ]"    
+      ArrayList: "{{ ArrayList }} + [ '{{ item }}' ]"
     with_items:
       - "hello1"
       - "hello2"
@@ -25,16 +31,3 @@
     debug:
         msg: "My Values - {{ ArrayList | join(',') }}"
         
-- name: Create VM with defaults
-  azure_rm_virtualmachine:
-    resource_group: Testing
-    name: testvm10
-    admin_username: chouseknecht
-    admin_password: S@umil1234567
-    image:
-      offer: CentOS
-      publisher: OpenLogic
-      sku: '7.1'
-      version: latest
-
-    
