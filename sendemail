@@ -1,0 +1,11 @@
+---
+- name: Sending an e-mail using Gmail SMTP servers
+  mail:
+    host: smtp.gmail.com
+    port: 587
+    username: saumil.shah@globant.com
+    password: September@2018
+    to: Saumil Shah <shahsaumil39@gmail..com>
+    subject: Ansible-report
+    body: System {{ ansible_hostname }} has been successfully provisioned.
+  delegate_to: localhost
