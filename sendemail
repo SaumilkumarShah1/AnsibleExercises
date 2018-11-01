@@ -2,13 +2,28 @@
 - hosts: localhost
   connection: local
   tasks:
-  - name: Sending an e-mail using Gmail SMTP servers
-    mail:
-      host: smtp.gmail.com
-      port: 587
-      username: saumil.shah@globant.com
-      password: September@2018
-      to: Saumil Shah <shahsaumil39@gmail..com>
-      subject: Ansible-report
-      body: System {{ ansible_hostname }} has been successfully provisioned.
-    delegate_to: localhost
+  - name: pingging localhost
+    ping:
+    register: p1
+  - name: print ping
+    debug:
+      msg: "{{p1}}"
+
+
+  - name: command
+    shell: cat /etc/passwd
+    register: s1
+
+  - name: printing command output
+    debug:
+      msg: "{{s1}}"
+
+  - name: creating a directory
+    file:
+      path: /tmp/data
+      state: directory
+    register: f1
+   
+  - name: printing directory output
+    debug:
+      msg: "{{f1}}"
